@@ -84,6 +84,10 @@ def main():
         PARSER.set_defaults(log_level='DEBUG')
     else:
         PARSER.set_defaults(log_level='WARN')
+    
+    if len(sys.argv) == 1:
+        PARSER.print_help()
+        sys.exit(1)
 
     args = PARSER.parse_args()
     logging.root.setLevel(getattr(logging, args.log_level))
